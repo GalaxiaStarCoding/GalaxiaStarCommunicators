@@ -1,0 +1,122 @@
+{
+  // ╔══════════════════════════════════════════════════════╗
+  // ║   GALAXIA STAR COMMUNICATORS — Tasks                ║
+  // ║   Run via Terminal > Run Task  or  Ctrl+Shift+B     ║
+  // ╚══════════════════════════════════════════════════════╝
+  "version": "2.0.0",
+  "tasks": [
+
+    // ── Install dependencies ──────────────────────────────
+    {
+      "label": "📦 Install Dependencies",
+      "type": "shell",
+      "command": "npm install",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+
+    // ── Start dev server ──────────────────────────────────
+    {
+      "label": "🚀 Start Dev Server",
+      "type": "shell",
+      "command": "npm run dev",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "isBackground": true,
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": {
+        "owner": "custom",
+        "pattern": {
+          "regexp": "^(.*):(\\d+):(\\d+):\\s+(error|warning):\\s+(.*)$",
+          "file": 1,
+          "line": 2,
+          "column": 3,
+          "severity": 4,
+          "message": 5
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "Starting",
+          "endsPattern": "compiled|ready"
+        }
+      }
+    },
+
+    // ── Build for production ──────────────────────────────
+    {
+      "label": "🏗️ Build for Production",
+      "type": "shell",
+      "command": "npm run build",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": ["$tsc"]
+    },
+
+    // ── Run tests ─────────────────────────────────────────
+    {
+      "label": "🧪 Run Tests",
+      "type": "shell",
+      "command": "npm test",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": []
+    },
+
+    // ── Lint code ─────────────────────────────────────────
+    {
+      "label": "🔍 Lint Code (ESLint)",
+      "type": "shell",
+      "command": "npm run lint",
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": ["$eslint-stylish"]
+    },
+
+    // ── Format code ───────────────────────────────────────
+    {
+      "label": "✨ Format Code (Prettier)",
+      "type": "shell",
+      "command": "npx prettier --write .",
+      "group": "build",
+      "presentation": {
+        "reveal": "silent",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+
+    // ── Accessibility audit ───────────────────────────────
+    {
+      "label": "♿ Run Accessibility Audit (axe)",
+      "type": "shell",
+      "command": "npx axe http://localhost:3000 --exit",
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    }
+  ]
+}
