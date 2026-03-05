@@ -1,0 +1,80 @@
+{
+  // ╔══════════════════════════════════════════════════════╗
+  // ║   GALAXIA STAR COMMUNICATORS — Launch Configs       ║
+  // ║   Debug configurations for F5 run & debug           ║
+  // ╚══════════════════════════════════════════════════════╝
+  "version": "0.2.0",
+  "configurations": [
+
+    // ── Open in Chrome ────────────────────────────────────
+    {
+      "name": "🌌 Galaxia — Launch in Chrome",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}/src",
+      "sourceMapPathOverrides": {
+        "webpack:///src/*": "${webRoot}/*"
+      }
+    },
+
+    // ── Open in Edge ──────────────────────────────────────
+    {
+      "name": "🌌 Galaxia — Launch in Edge",
+      "type": "msedge",
+      "request": "launch",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}/src"
+    },
+
+    // ── Node.js Backend ───────────────────────────────────
+    {
+      "name": "🚀 Galaxia — Start Backend Server",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/server/index.js",
+      "restart": true,
+      "runtimeExecutable": "nodemon",
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"]
+    },
+
+    // ── Jest Tests ────────────────────────────────────────
+    {
+      "name": "🧪 Galaxia — Run Jest Tests",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/node_modules/.bin/jest",
+      "args": ["--runInBand", "--watchAll=false"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "env": {
+        "NODE_ENV": "test"
+      }
+    },
+
+    // ── Attach to running process ─────────────────────────
+    {
+      "name": "🔗 Galaxia — Attach to Process",
+      "type": "node",
+      "request": "attach",
+      "port": 9229,
+      "restart": true,
+      "skipFiles": ["<node_internals>/**"]
+    }
+  ],
+
+  // ── Compound: run frontend + backend together ──────────
+  "compounds": [
+    {
+      "name": "🌌 Galaxia — Full Stack",
+      "configurations": [
+        "🚀 Galaxia — Start Backend Server",
+        "🌌 Galaxia — Launch in Chrome"
+      ]
+    }
+  ]
+}
