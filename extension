@@ -1,0 +1,47 @@
+{
+  // ╔══════════════════════════════════════════════════════════╗
+  // ║   GALAXIA STAR COMMUNICATORS — Recommended Extensions   ║
+  // ║   VS Code will prompt contributors to install these     ║
+  // ╚══════════════════════════════════════════════════════════╝
+  "recommendations": [
+
+    // ── Formatting & Linting ──────────────────────────────────
+    "esbenp.prettier-vscode",          // Prettier — code formatter
+    "dbaeumer.vscode-eslint",          // ESLint — JS/TS linting
+    "stylelint.vscode-stylelint",      // Stylelint — CSS linting
+
+    // ── HTML / CSS / JS Intelligence ─────────────────────────
+    "ecmel.vscode-html-css",           // HTML CSS class suggestions
+    "pranaygp.vscode-css-peek",        // Peek CSS definitions
+    "zignd.html-css-class-completion", // CSS class autocomplete
+    "formulahendry.auto-rename-tag",   // Auto rename paired HTML tags
+    "formulahendry.auto-close-tag",    // Auto close HTML tags
+    "christian-kohler.path-intellisense", // Path autocomplete
+
+    // ── React / TypeScript ────────────────────────────────────
+    "dsznajder.es7-react-js-snippets", // React snippets
+    "ms-vscode.vscode-typescript-next", // TypeScript support
+
+    // ── Git & Collaboration ───────────────────────────────────
+    "eamodio.gitlens",                 // GitLens — advanced Git UI
+    "github.vscode-pull-request-github", // GitHub PRs inside VS Code
+    "github.copilot",                  // GitHub Copilot (optional)
+
+    // ── Accessibility ─────────────────────────────────────────
+    "deque-systems.vscode-axe-linter", // axe — ARIA/accessibility linting
+    "ms-vscode.vscode-speech",         // Speech support
+
+    // ── Theming ───────────────────────────────────────────────
+    "zhuangtongfa.material-theme",     // One Dark Pro theme
+    "pkief.material-icon-theme",       // Material file icons
+
+    // ── Utilities ─────────────────────────────────────────────
+    "usernamehw.errorlens",            // Inline error messages
+    "streetsidesoftware.code-spell-checker", // Spell checker
+    "ms-vsliveshare.vsliveshare",      // Live Share — pair programming
+    "wayou.vscode-todo-highlight",     // Highlight TODO / FIXME comments
+    "gruntfuggly.todo-tree",           // TODO tree sidebar panel
+    "yzhang.markdown-all-in-one",      // Markdown preview + shortcuts
+    "ritwickdey.liveserver"            // Live Server — local dev server
+  ]
+}
