@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GalaxiaStar — Chat</title>
+  <link rel="stylesheet" href="/styles/chat-layout.css">
+  <link rel="stylesheet" href="/styles/visually-hidden.css">
+  <link rel="stylesheet" href="/styles/focus.css">
+</head>
+<body>
+  <div id="live-region" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+  <div class="app-shell" role="application" aria-label="GalaxiaStar chat application">
+    <!-- Left: Direct messages / channels -->
+    <nav id="dm-list" class="pane dm-pane" role="navigation" aria-label="Direct messages and channels">
+      <header class="pane-header">Direct Messages</header>
+      <ul class="dm-items" role="list">
+        <li role="listitem"><button class="dm-item">Alice</button></li>
+        <li role="listitem"><button class="dm-item">Bob</button></li>
+        <li role="listitem"><button class="dm-item">General</button></li>
+      </ul>
+    </nav>
+
+    <!-- Center: Chat area -->
+    <main id="chat" class="pane chat-pane" role="main" aria-label="Chat messages">
+      <header class="pane-header">#general</header>
+      <section id="messages" class="messages" role="log" aria-live="polite" aria-relevant="additions">
+        <!-- message elements (role="article" or role="listitem") -->
+      </section>
+
+      <form id="composer" class="composer" role="search" aria-label="Message composer">
+        <input id="message-input" type="text" placeholder="Type a message" aria-label="Type a message"/>
+        <button type="submit">Send</button>
+      </form>
+    </main>
+
+    <!-- Right: Members list -->
+    <aside id="members" class="pane members-pane" role="complementary" aria-label="Members list">
+      <header class="pane-header">Members <span id="member-count">(0)</span></header>
+      <div id="members-list" class="members-list" role="listbox" tabindex="0" aria-label="Room members">
+        <!-- member items will be rendered here -->
+      </div>
+    </aside>
+  </div>
+
+  <script src="/js/members.js"></script>
+  <script src="/js/announce.js"></script>
+</body>
+</html>
