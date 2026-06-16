@@ -1,0 +1,23 @@
+:focus {
+  outline: 3px solid #4D90FE;
+  outline-offset: 2px;
+}
+button:focus, [role="button"]:focus {
+  box-shadow: 0 0 0 3px rgba(77,144,254,0.25);
+}
+
+/* Make skip-link visible when focused */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: auto;
+}
+.skip-link:focus {
+  left: 8px;
+  top: 8px;
+  background: #fff;
+  padding: 6px 8px;
+  z-index: 1000;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
