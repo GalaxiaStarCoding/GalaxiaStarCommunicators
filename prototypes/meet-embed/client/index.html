@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Meet-style Embed — GalaxiaStar Communicators Prototype</title>
+  <style>
+    body { margin:0; font-family: Inter, system-ui, -apple-system; }
+    header { padding:12px; background:#0f1724; color:#fff; display:flex; gap:8px; align-items:center; }
+    input { padding:8px; border-radius:6px; border:1px solid #e6eef8; }
+    button { padding:8px 10px; border-radius:6px; border:0; background:#10b981; color:#fff; }
+    #frame { width:100%; height:calc(100vh - 56px); border:0; }
+  </style>
+</head>
+<body>
+  <header>
+    <input id="room" value="GalaxiaStarMeetDemo" />
+    <button id="join">Join Jitsi (meet.jit.si)</button>
+  </header>
+  <iframe id="frame" src="https://meet.jit.si/GalaxiaStarMeetDemo" allow="camera; microphone; fullscreen; display-capture"></iframe>
+  <script>
+    document.getElementById('join').onclick = () => {
+      const r = document.getElementById('room').value || 'GalaxiaStarMeetDemo';
+      document.getElementById('frame').src = `https://meet.jit.si/${encodeURIComponent(r)}`;
+    };
+  </script>
+</body>
+</html>
