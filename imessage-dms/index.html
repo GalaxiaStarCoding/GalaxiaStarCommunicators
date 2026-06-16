@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Galaxia Star Communicators — iMessage-styled DMs</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Top: Servers bar (Discord-style but on top) -->
+  <header class="top-servers">
+    <div class="servers-list">
+      <button class="server active">GS</button>
+      <button class="server">A1</button>
+      <button class="server">B2</button>
+      <button class="server">+" title="Add"></button>
+    </div>
+  </header>
+
+  <!-- Under the servers bar: secondary bar (Discord-like) -->
+  <div class="server-actions">
+    <div class="left-actions">
+      <div class="server-name">GalaxiaStar</div>
+    </div>
+    <div class="right-actions">
+      <button class="icon">🔍</button>
+      <button class="icon">⚙️</button>
+      <button class="icon">⋯</button>
+    </div>
+  </div>
+
+  <main class="app">
+    <!-- Left: Chat list (WhatsApp-styled) -->
+    <aside class="chat-list">
+      <div class="friends-filters">
+        <button class="filter active" data-filter="online">Online</button>
+        <button class="filter" data-filter="all">All</button>
+        <button class="filter" data-filter="pending">Pending</button>
+        <button class="filter" data-filter="add">Add Friends</button>
+      </div>
+
+      <div class="search">
+        <input type="search" placeholder="Search or start new chat" />
+      </div>
+
+      <ul class="chats">
+        <li class="chat active" data-id="1">
+          <img class="avatar" src="https://via.placeholder.com/48" alt="A" />
+          <div class="meta">
+            <div class="name">Alex</div>
+            <div class="preview">You: See you at 6pm</div>
+          </div>
+          <div class="time">2:12 PM</div>
+        </li>
+        <li class="chat" data-id="2">
+          <img class="avatar" src="https://via.placeholder.com/48" alt="M" />
+          <div class="meta">
+            <div class="name">Morgan</div>
+            <div class="preview">Sent a photo</div>
+          </div>
+          <div class="time">Yesterday</div>
+        </li>
+        <li class="chat" data-id="3">
+          <img class="avatar" src="https://via.placeholder.com/48" alt="R" />
+          <div class="meta">
+            <div class="name">Riley</div>
+            <div class="preview">Typing...</div>
+          </div>
+          <div class="time">Online</div>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- Right: Messages (iMessage-styled) -->
+    <section class="messages">
+      <div class="messages-header">
+        <div class="title">Alex</div>
+        <div class="subtitle">Online</div>
+      </div>
+
+      <div class="messages-body" id="messagesBody">
+        <div class="message received">
+          <div class="bubble">Hey! Are you coming tonight?</div>
+        </div>
+        <div class="message sent">
+          <div class="bubble">Yeah — I'll be there around 6.</div>
+        </div>
+        <div class="message received">
+          <div class="bubble">Perfect. Bring the controller.</div>
+        </div>
+      </div>
+
+      <form class="composer" id="composer">
+        <input id="messageInput" placeholder="iMessage-style message" autocomplete="off" />
+        <button type="submit">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
