@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Galaxia Star Communicators — Top Server Bar Demo</title>
+  <link rel="stylesheet" href="css/server-top.css">
+</head>
+<body>
+  <header class="server-bar" role="navigation" aria-label="Server list">
+    <ul class="servers" role="list">
+      <li class="server" tabindex="0" data-name="Home">
+        <div class="server-icon active" aria-hidden="true">GS</div>
+        <span class="badge">3</span>
+      </li>
+      <li class="server" tabindex="0" data-name="Friends">
+        <div class="server-icon" aria-hidden="true">F</div>
+      </li>
+      <li class="server" tabindex="0" data-name="Work">
+        <div class="server-icon" aria-hidden="true">W</div>
+        <span class="badge dot"></span>
+      </li>
+      <li class="server" tabindex="0" data-name="Gaming">
+        <div class="server-icon" aria-hidden="true">G</div>
+      </li>
+      <li class="server" tabindex="0" data-name="Study">
+        <div class="server-icon" aria-hidden="true">S</div>
+      </li>
+      <li class="server" tabindex="0" data-name="Meetings">
+        <div class="server-icon" aria-hidden="true">M</div>
+      </li>
+      <!-- Add more servers as needed -->
+    </ul>
+  </header>
+
+  <main class="app-content">
+    <section class="hero">
+      <h1>Top Server List Demo</h1>
+      <p>This demo shows a Discord-style server list positioned at the top of the app instead of the left side.</p>
+      <p>Click or tab+enter on the circles to activate a server. Resize to see horizontal scrolling behavior.</p>
+    </section>
+  </main>
+
+  <div id="tooltip" class="tooltip" aria-hidden="true"></div>
+
+  <script>
+    // Simple interaction: toggle active state; show tooltip on hover/focus
+    document.addEventListener('DOMContentLoaded', () => {
+      const servers = document.querySelectorAll('.server');
+      const tooltip = document.getElementById('tooltip');
+
+      servers.forEach(s => {
+        const icon = s.querySelector('.server-icon');
+        const name = s.dataset.name || 'Server';
+
+        const activate = () => {
+          document.querySelectorAll('.server-icon').forEach(i => i.classList.remove('active'));
+          icon.classList.add('active');
+        };
+
+        s.addEventListener('click', activate);
+        s.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            activate();
+          }
+        });
+
+        s.addEventListener('mouseenter', (e) => {
+          tooltip.textContent = name;
+          tooltip.style.opacity = '1';
+          const rect = s.getBoundingClientRect();
+          tooltip.style.left = rect.left + window.scrollX + 'px';
+          tooltip.style.top = (rect.bottom + 8) + window.scrollY + 'px';
+          tooltip.setAttribute('aria-hidden', 'false');
+        });
+        s.addEventListener('mouseleave', () => {
+          tooltip.style.opacity = '0';
+          tooltip.setAttribute('aria-hidden', 'true');
+        });
+
+        s.addEventListener('focus', (e) => {
+          tooltip.textContent = name;
+          tooltip.style.opacity = '1';
+          const rect = s.getBoundingClientRect();
+          tooltip.style.left = rect.left + window.scrollX + 'px';
+          tooltip.style.top = (rect.bottom + 8) + window.scrollY + 'px';
+          tooltip.setAttribute('aria-hidden', 'false');
+        });
+        s.addEventListener('blur', () => {
+          tooltip.style.opacity = '0';
+          tooltip.setAttribute('aria-hidden', 'true');
+        });
+      });
+
+      // Allow horizontal scrolling with mouse wheel when hovered
+      const serversList = document.querySelector('.servers');
+      serversList.addEventListener('wheel', (e) => {
+        if (Math.abs(e.deltaX) < Math.abs(e.deltaY)) {
+          serversList.scrollLeft += e.deltaY;
+          e.preventDefault();
+        }
+      }, { passive: false });
+    });
+  </script>
+</body>
+</html>
