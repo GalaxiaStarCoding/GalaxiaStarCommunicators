@@ -1,0 +1,105 @@
+/* styles.css — Styles for iMessage-styled DMs, top servers bar (Discord-style), WhatsApp-style chat list, and Discord-like secondary bar */
+:root{
+  --bg:#0f1724;
+  --panel:#0b1220;
+  --muted:#9aa4b2;
+  --accent:#0b93f6; /* iMessage blue */
+  --bubble-sent:#0b93f6;
+  --bubble-received:#e5e7eb; /* light gray */
+  --text-dark:#0b1220;
+  --glass: rgba(255,255,255,0.04);
+  --radius:18px;
+  --server-size:48px;
+}
+
+/* Reset */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background:linear-gradient(180deg,#071022 0%, #0a1524 100%);
+  color:#e6eef8;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* Top servers bar — Discord-style but on top */
+.top-servers{
+  display:flex;align-items:center;justify-content:center;
+  padding:10px 14px;background:var(--panel);
+  border-bottom:1px solid rgba(255,255,255,0.03);
+  position:sticky;top:0;z-index:30;
+}
+.servers-list{display:flex;gap:10px;align-items:center}
+.server{
+  width:var(--server-size);height:var(--server-size);
+  border-radius:12px;background:linear-gradient(180deg,#0d2440,#072035);
+  border:2px solid rgba(255,255,255,0.03);
+  color:white;font-weight:700;display:inline-grid;place-items:center;
+  cursor:pointer;box-shadow:0 4px 12px rgba(2,6,23,0.6);
+}
+.server.active{box-shadow:0 6px 20px rgba(11,147,246,0.18);transform:translateY(-2px)}
+.server[title]{font-size:18px}
+.server.add{background:transparent;border:2px dashed rgba(255,255,255,0.06);color:var(--muted)}
+
+/* Secondary Discord-like actions bar under servers bar */
+.server-actions{
+  display:flex;justify-content:space-between;align-items:center;padding:8px 16px;background:transparent;
+  border-bottom:1px solid rgba(255,255,255,0.02);
+}
+.server-actions .server-name{font-weight:700;color:var(--muted)}
+.server-actions .icon{background:transparent;border:none;color:var(--muted);font-size:18px;margin-left:8px;cursor:pointer}
+
+/* Main app layout */
+.app{display:grid;grid-template-columns:320px 1fr;height:calc(100vh - 112px); /* account for header bars */}
+
+/* Chat list (WhatsApp style) */
+.chat-list{background:linear-gradient(180deg,#071022,#071322);padding:12px;overflow:hidden;border-right:1px solid rgba(255,255,255,0.02)}
+.friends-filters{display:flex;gap:8px;margin-bottom:10px}
+.filter{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted);padding:6px 10px;border-radius:12px;cursor:pointer}
+.filter.active{background:var(--glass);border-color:rgba(255,255,255,0.06);color:white}
+
+.search input{width:100%;padding:10px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--muted)}
+
+.chats{list-style:none;margin-top:12px;overflow:auto;height:calc(100% - 120px);padding-right:6px}
+.chat{display:flex;align-items:center;padding:10px;border-radius:10px;gap:10px;cursor:pointer}
+.chat:hover{background:rgba(255,255,255,0.02)}
+.chat.active{background:linear-gradient(90deg, rgba(11,147,246,0.08), rgba(11,147,246,0.02));}
+.avatar{width:48px;height:48px;border-radius:50%;object-fit:cover}
+.meta{flex:1;min-width:0}
+.name{font-weight:700}
+.preview{font-size:13px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.time{font-size:12px;color:var(--muted);margin-left:8px}
+
+/* Messages panel — iMessage look */
+.messages{display:flex;flex-direction:column;background:linear-gradient(180deg,#071022,#071422);}
+.messages-header{padding:14px;border-bottom:1px solid rgba(255,255,255,0.02);display:flex;flex-direction:column}
+.messages-header .title{font-weight:700}
+.messages-header .subtitle{font-size:13px;color:var(--muted)}
+
+.messages-body{flex:1;overflow:auto;padding:22px 18px;display:flex;flex-direction:column;gap:12px}
+.message{display:flex}
+.message .bubble{max-width:70%;padding:12px 14px;border-radius:18px;line-height:1.35}
+.message.sent{justify-content:flex-end}
+.message.sent .bubble{background:var(--bubble-sent);color:white;border-bottom-right-radius:6px;border-bottom-left-radius:18px}
+.message.received{justify-content:flex-start}
+.message.received .bubble{background:var(--bubble-received);color:var(--text-dark);border-bottom-left-radius:6px;border-bottom-right-radius:18px}
+
+/* Composer */
+.composer{padding:12px;border-top:1px solid rgba(255,255,255,0.02);display:flex;gap:8px;align-items:center}
+.composer input{flex:1;padding:12px;border-radius:18px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--muted)}
+.composer button{background:var(--accent);border:none;color:white;padding:10px 14px;border-radius:12px;cursor:pointer}
+
+/* Small screens */
+@media (max-width:900px){
+  .app{grid-template-columns:1fr}
+  .chat-list{height:40vh}
+  .messages{height:60vh}
+}
+
+/* Scrollbars */
+.chats::-webkit-scrollbar,.messages-body::-webkit-scrollbar{width:8px}
+.chats::-webkit-scrollbar-thumb,.messages-body::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.04);border-radius:8px}
+
+/* Utility */
+.hidden{display:none}
